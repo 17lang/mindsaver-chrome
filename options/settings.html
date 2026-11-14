@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Mind Clipper settings, v7. Only sections with real options remain. -->
+<html lang="zh-CN" id="settings-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mind Clipper 设置</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div id="settings"><div id="settings-container">
+    <nav id="sidebar" class="sidebar" aria-label="设置分类">
+      <div id="settings-sidebar-title"><img src="../icons/icon32.png" alt="">Mind Clipper</div>
+      <ul>
+        <li data-section="naming"><button type="button">文件命名</button></li>
+        <li data-section="markdown"><button type="button">Markdown 设置</button></li>
+      </ul>
+    </nav>
+    <main id="content">
+      <form id="save-settings-form">
+        <section id="naming-section" class="settings-section">
+          <div class="settings-section-header"><h1>文件命名</h1></div>
+          <div class="setting-items">
+            <label class="naming-toggle" for="normalize-filenames"><input id="normalize-filenames" type="checkbox" checked> <span>自动规范文件名</span></label>
+            <p class="setting-item-description">空格、标点和表情统一为短横线；保留文字、数字和英文句点。优先使用文章发布日期，取不到用当天日期，长标题保持完整。</p>
+            <div id="naming-date-options">
+              <label for="filename-date-position">日期位置</label>
+              <select id="filename-date-position"><option value="before">时间在前</option><option value="after">时间在后</option></select>
+              <p class="setting-item-description">适用于 PDF、HTML 和 Markdown。标题已有日期时保留，不重复添加。同名文件自动编号，不覆盖原文件。</p>
+            </div>
+            <div class="setting-item">
+              <label>文件名示例</label>
+              <div id="filename-preview" class="mc-preview">2026-11-13-文章标题.pdf</div>
+            </div>
+            <p class="setting-item-description mc-note">PDF / HTML 和默认下载的 Markdown 都保存到 Chrome 下载文件夹（可在 Chrome 设置里更改该目录）；只有 Markdown 能保存到 Obsidian 仓库。</p>
+          </div>
+        </section>
+
+        <section id="markdown-section" class="settings-section">
+          <div class="settings-section-header"><h1>Markdown 设置</h1></div>
+          <div class="setting-items">
+            <div class="setting-item">
+              <label for="markdown-mode">默认保存位置</label>
+              <select id="markdown-mode">
+                <option value="default">浏览器下载文件夹</option>
+                <option value="obsidian">保存到 Obsidian 仓库</option>
+              </select>
+              <p class="setting-item-description">两种位置都<strong>无需额外安装任何东西</strong>。</p>
+            </div>
+            <div id="markdown-default-hint" class="setting-item" hidden>
+              <p class="setting-item-description">Markdown 和 PDF / HTML 一样保存到 Chrome 的下载文件夹，按「文件命名」页的规则命名。</p>
+            </div>
+            <div id="markdown-obsidian-fields" hidden>
+              <div class="setting-item">
+                <label for="obsidian-vault-name">仓库名称</label>
+                <input id="obsidian-vault-name" type="text" spellcheck="false" placeholder="例如 Ob.temp">
+                <p class="setting-item-description">必须与 Obsidian 仓库切换器里显示的名称<strong>完全一致、区分大小写</strong>。名称填错时 Obsidian 会提示找不到仓库。留空则使用当前打开的仓库。</p>
+                <button id="check-vault" type="button">检查仓库名称</button>
+                <p class="setting-item-description">只让 Obsidian 打开这个仓库，<strong>不会创建笔记</strong>。首次使用时 Chrome 会询问是否允许打开 Obsidian，请选择「允许」。</p>
+              </div>
+              <div class="setting-item">
+                <label for="template-path-name">仓库内文件夹</label>
+                <input id="template-path-name" type="text" placeholder="Clippings" spellcheck="false">
+                <p class="setting-item-description">相对仓库根目录，例如 XO.Clippings；留空保存到仓库根目录。文件夹不存在时 Obsidian 会自动创建。</p>
+              </div>
+              <div class="setting-item">
+                <label>将创建的笔记</label>
+                <div id="note-path-preview" class="mc-preview">当前仓库 / 2026-11-13-文章标题.md</div>
+                <p class="setting-item-description">保存时会打开一个提示页，显示仓库名、笔记路径和传递方式。笔记由 Obsidian 自己写入，扩展拿不到落盘回执，请在 Obsidian 里确认结果。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div id="save-bar"><button type="submit" id="save-settings" class="mod-cta">保存设置</button>
+          <span id="settings-status" role="status" aria-live="polite">修改后会自动保存</span>
+        </div>
+      </form>
+    </main>
+  </div></div>
+  <script src="../lib/browser-shim.js"></script>
+  <script src="../i18n.js"></script>
+  <script src="filename-rules.js"></script>
+  <script src="destinations.js"></script>
+  <script src="settings-section-ui.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

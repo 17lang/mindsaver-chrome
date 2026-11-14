@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Mindsaver — solid</title>
+  <!--
+    Solid-colour variant of Mindsaver.svg.
+    Geometry is unchanged (rounded plate, sheet, folded corner, download arrow).
+    All colour transitions and drop-shadow effects were removed: the plate is flat
+    white, the sheet is one solid blue, the fold is one solid pale blue, and the
+    arrow is flat white. Transparent outside the rounded plate (no white square).
+  -->
+  <rect x="100" y="100" width="824" height="824" rx="185.4" fill="#FFFFFF" stroke="#E3E9F0" stroke-width="3"/>
+  <path d="M366 253H567Q590 253 606 269L699 362Q716 379 716 403V690Q716 761 645 761H366Q295 761 295 690V324Q295 253 366 253Z" fill="#1689F5"/>
+  <path d="M580 257Q595 259 606 270L699 363Q712 376 714 391H625Q580 391 580 346Z" fill="#E8F3FF"/>
+  <path d="M505 434V602M443 542L505 604L567 542M417 668H593" fill="none" stroke="#FFFFFF" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

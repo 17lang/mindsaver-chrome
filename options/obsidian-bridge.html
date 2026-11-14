@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Visible hand-off page: performs the external-protocol jump to Obsidian and
+     shows exactly which vault / note was requested. -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Mind Clipper · 交给 Obsidian</title>
+  <style>
+    :root { color-scheme: light; --accent: #7055ba; --muted: #62626e; --line: #dedee3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 24px; background: #fff; color: #25252b;
+           font: 15px/1.65 system-ui, -apple-system, "PingFang SC", sans-serif; }
+    main { max-width: 620px; margin: 0 auto; }
+    h1 { margin: 0 0 6px; font-size: 22px; font-weight: 600; }
+    .lead { color: var(--muted); margin: 0 0 24px; }
+    .card { background: #f6f6f7; border: 1px solid var(--line); border-radius: 10px;
+            padding: 16px 18px; margin: 0 0 20px; }
+    .row { display: flex; gap: 12px; padding: 6px 0; }
+    .row span:first-child { flex: 0 0 96px; color: var(--muted); }
+    .row span:last-child { min-width: 0; overflow-wrap: anywhere; font-weight: 500; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 24px; }
+    button, a.button { display: inline-block; padding: 9px 15px; border-radius: 6px;
+      border: 1px solid var(--line); background: #fff; color: inherit; font: inherit;
+      text-decoration: none; cursor: pointer; }
+    button.primary, a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    h2 { font-size: 15px; margin: 24px 0 8px; }
+    ol { margin: 0; padding-left: 22px; color: var(--muted); font-size: 14px; }
+    li { margin: 5px 0; }
+    #hint { color: var(--muted); font-size: 13px; margin-top: 18px; }
+    code { background: #f0f0f3; padding: 1px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>正在交给 Obsidian</h1>
+  <p class="lead">如果 Chrome 弹出「打开 Obsidian？」的确认框，请选择<strong>允许</strong>。本页可随时关闭。</p>
+  <div class="card">
+    <div class="row"><span>目标仓库</span><span id="vault">—</span></div>
+    <div class="row"><span>笔记路径</span><span id="note">—</span></div>
+    <div class="row"><span>正文传递</span><span id="mode">—</span></div>
+    <div class="row"><span>状态</span><span id="state">准备中…</span></div>
+  </div>
+  <div class="buttons">
+    <button id="open" class="primary" type="button">重新打开 Obsidian</button>
+    <button id="copy" type="button">复制 Obsidian 链接</button>
+    <button id="settings" type="button">打开设置</button>
+  </div>
+  <h2>如果笔记没有出现在仓库里</h2>
+  <ol>
+    <li>确认 Chrome 的「打开 Obsidian？」对话框已允许；被拒绝时本页会保留，可点上方按钮重试。</li>
+    <li>核对<strong>仓库名称</strong>：必须与 Obsidian 仓库切换器里的名称完全一致，<strong>区分大小写</strong>。例如 <code>ob.temp</code> 与 <code>Ob.temp</code> 是两个不同的名字；不确定就留空，用当前打开的仓库。</li>
+    <li>确认 Obsidian 已安装并至少启动过一次（用于注册 <code>obsidian://</code> 协议）；使用剪贴板传正文时需要 Obsidian 1.7.2 或更新。</li>
+    <li>仍无反应时，复制上方链接粘贴到浏览器地址栏手动打开；若 Obsidian 提示找不到仓库，回到设置页修改仓库名称。</li>
+  </ol>
+  <p id="hint"></p>
+</main>
+<script src="../lib/browser-shim.js"></script>
+<script src="obsidian-bridge.js"></script>
+</body>
+</html>

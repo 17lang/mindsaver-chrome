@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Mind Clipper",
+  "version": "0.8.5",
+  "description": "__MSG_ui_c091262530cb__",
+  "default_locale": "en",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "downloads",
+    "contextMenus",
+    "clipboardWrite",
+    "scripting",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "__MSG_ui_a3c40646b7e6__",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "64": "icons/icon64.png",
+      "96": "icons/icon96.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "96": "icons/icon96.png",
+    "128": "icons/icon128.png"
+  },
+  "options_ui": {
+    "page": "options/settings.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "lib/browser-shim.js",
+        "i18n.js",
+        "options/filename-rules.js",
+        "content/page-metadata.js",
+        "content/00-boot.js",
+        "lib/html-to-image.iife.js",
+        "content/overlay.js",
+        "content/serialize.js",
+        "content/pdfclient.js",
+        "content/textlayer.js",
+        "content/capture.js",
+        "content/picker.js",
+        "lib/single-file.js",
+        "lib/defuddle-full.js",
+        "content/htmlsave.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
